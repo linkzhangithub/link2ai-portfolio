@@ -25,357 +25,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <style>
-      :root {
-        --bg-primary: #f8fafc;
-        --bg-secondary: #ffffff;
-        --text-primary: #1e293b;
-        --text-secondary: #64748b;
-        --accent-primary: #3b82f6;
-        --accent-secondary: #8b5cf6;
-        --shadow:
-          0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        --shadow-hover:
-          0 10px 15px -3px rgba(0, 0, 0, 0.1),
-          0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        --border-radius: 8px;
-        --transition: all 0.3s ease;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: var(--bg-primary);
-        color: var(--text-primary);
-        line-height: 1.6;
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-      /* 导航栏 */
-      header {
-        background-color: var(--bg-secondary);
-        box-shadow: var(--shadow);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 0;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-      .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--accent-primary);
-        text-decoration: none;
-      }
-      .nav-links {
-        display: flex;
-        list-style: none;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-      }
-      .nav-links a {
-        text-decoration: none;
-        color: var(--text-primary);
-        font-weight: 500;
-        transition: var(--transition);
-      }
-      .nav-links a:hover {
-        color: var(--accent-primary);
-      }
-      /* 英雄区 */
-      .hero {
-        padding: 5rem 0 4rem;
-        text-align: center;
-        background: linear-gradient(135deg, var(--bg-primary) 0%, #e2e8f0 100%);
-      }
-      .hero .subtitle {
-        font-size: 2rem;
-        color: var(--accent-primary);
-        margin-bottom: 1rem;
-        font-weight: 600;
-      }
-      .hero p {
-        font-size: 1rem;
-        color: var(--text-secondary);
-        max-width: 600px;
-        margin: 0 auto 2rem;
-      }
-      .btn {
-        display: inline-block;
-        padding: 0.75rem 1.5rem;
-        background-color: var(--accent-primary);
-        color: white;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 500;
-        transition: var(--transition);
-      }
-      .btn:hover {
-        background-color: var(--accent-secondary);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-hover);
-      }
-      /* 项目展示区 - 网格布局 */
-      .projects {
-        padding: 6rem 0;
-      }
-      .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-        color: var(--text-primary);
-        font-weight: bold;
-        position: relative;
-      }
-      .section-title::after {
-        content: "";
-        display: block;
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(
-          90deg,
-          var(--accent-primary),
-          var(--accent-secondary)
-        );
-        margin: 1rem auto 0;
-        border-radius: 2px;
-      }
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2.5rem;
-      }
-      .project-card {
-        background-color: var(--bg-secondary);
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-      }
-      .project-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-hover);
-      }
-      .project-image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
-      .project-content {
-        padding: 1.5rem;
-      }
-      .project-title {
-        font-size: 1.25rem;
-        margin-bottom: 0.75rem;
-        color: var(--text-primary);
-        font-weight: bold;
-      }
-      .project-description {
-        color: var(--text-secondary);
-        margin-bottom: 1.25rem;
-        line-height: 1.5;
-        font-size: 0.95rem;
-      }
-      .project-tech {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-      }
-      .tech-tag {
-        padding: 0.25rem 0.75rem;
-        background-color: #e2e8f0;
-        border-radius: 16px;
-        font-size: 0.75rem;
-        font-weight: 500;
-        color: var(--text-primary);
-      }
-      .project-links {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        margin-top: 1rem;
-      }
-      .project-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        text-decoration: none;
-        color: var(--accent-primary);
-        font-weight: 500;
-        transition: var(--transition);
-      }
-      .project-link:hover {
-        color: var(--accent-secondary);
-        text-decoration: underline;
-      }
-      /* 技术栈卡片网格（DeepSeek 设计） */
-      .tech-stack {
-        padding: 4rem 0;
-        background-color: var(--bg-secondary);
-      }
-      .tech-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 120px));
-        gap: 1.5rem;
-        justify-content: center;
-        margin-top: 2rem;
-      }
-      .tech-card {
-        background-color: var(--bg-primary);
-        border-radius: 16px;
-        padding: 1rem 0.5rem;
-        text-align: center;
-        transition: var(--transition);
-        box-shadow: var(--shadow);
-      }
-      .tech-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-hover);
-        background-color: var(--accent-primary);
-        color: white;
-      }
-      .tech-card i {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-        display: block;
-      }
-      .tech-card span {
-        font-size: 0.85rem;
-        font-weight: 500;
-      }
-      /* 关于我 */
-      .about {
-        padding: 4rem 0;
-      }
-      .about-content {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-        color: var(--text-secondary);
-        font-style: italic;
-      }
-      /* 联系区 */
-      .contact {
-        padding: 4rem 0;
-        background-color: var(--bg-secondary);
-      }
-      .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-top: 2rem;
-      }
-      .social-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: #e2e8f0;
-        color: var(--text-primary);
-        transition: var(--transition);
-        text-decoration: none;
-      }
-      .social-link:hover {
-        background-color: var(--accent-primary);
-        color: white;
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-hover);
-      }
-      footer {
-        background-color: var(--text-primary);
-        color: white;
-        text-align: center;
-        padding: 2rem 0;
-      }
-      /* 滚动动画 */
-      .fade-up {
-        opacity: 0;
-        transform: translateY(30px);
-        transition:
-          opacity 0.8s ease,
-          transform 0.8s ease;
-      }
-      .fade-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      /* 回到顶部按钮 */
-      .back-to-top {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: var(--accent-primary);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-        opacity: 0;
-        visibility: hidden;
-        z-index: 99;
-      }
-      .back-to-top.visible {
-        opacity: 1;
-        visibility: visible;
-      }
-      .back-to-top:hover {
-        background-color: var(--accent-secondary);
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-hover);
-      }
-      /* 响应式 */
-      @media (max-width: 768px) {
-        nav {
-          justify-content: center;
-          text-align: center;
-        }
-        .hero .subtitle {
-          font-size: 1.5rem;
-        }
-        .tech-grid {
-          grid-template-columns: repeat(auto-fit, minmax(90px, 100px));
-          gap: 1rem;
-        }
-        .back-to-top {
-          bottom: 1rem;
-          right: 1rem;
-          width: 40px;
-          height: 40px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <header>
       <div class="container">
         <nav>
-          <a href="#" class="logo">Link Zhang</a>
+          <a href="#" class="logo">
+            <img src="images/cat.jpg" alt="Avatar" class="logo-avatar" />
+            Link Zhang
+          </a>
           <ul class="nav-links">
             <li><a href="#projects">项目</a></li>
             <li><a href="#tech">技术栈</a></li>
@@ -394,109 +53,115 @@
       </div>
     </section>
 
-    <section id="projects" class="projects fade-up">
+    <section id="projects" class="projects section-lg fade-up">
       <div class="container">
         <h2 class="section-title">主要项目</h2>
         <div class="projects-grid">
-          <div class="project-card">
-            <img
-              src="https://picsum.photos/400/240?random=1"
-              alt="AI 对话助手"
-              class="project-image"
-            />
-            <div class="project-content">
-              <h3 class="project-title">AI 对话助手</h3>
-              <p class="project-description">
+          <div class="card">
+            <div class="card-image-container">
+              <img
+                src="images/AI 对话助手.png"
+                alt="AI 对话助手"
+                class="card-image"
+              />
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">AI 对话助手</h3>
+              <p class="card-description">
                 基于 Vue 3 + Pinia + Vite + Node.js + 智谱 AI (GLM-4) +
                 讯飞语音构建的智能对话系统。<br />
                 支持语音输入、图片理解、流式对话、多角色切换和对话历史管理。
               </p>
-              <div class="project-tech">
-                <span class="tech-tag">Vue 3</span>
-                <span class="tech-tag">Pinia</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">Zhipu GLM-4</span>
-                <span class="tech-tag">iFlytek</span>
+              <div class="tag-list">
+                <span class="tag">Vue 3</span>
+                <span class="tag">Pinia</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Zhipu GLM-4</span>
+                <span class="tag">iFlytek</span>
               </div>
-              <div class="project-links">
+              <div class="link-list">
                 <a
                   href="https://ai.link2ai.online"
                   target="_blank"
-                  class="project-link"
+                  class="link"
                 >
                   <i class="fas fa-external-link-alt"></i> 在线体验
                 </a>
                 <a
-                  href="https://github.com/linkzhangithub/ai-assistant"
+                  href="https://github.com/linkzhangithub/ai-chat-assistant"
                   target="_blank"
-                  class="project-link"
+                  class="link"
                 >
                   <i class="fab fa-github"></i> GitHub
                 </a>
               </div>
             </div>
           </div>
-          <div class="project-card">
-            <img
-              src="https://picsum.photos/400/240?random=2"
-              alt="RAG 智能助手"
-              class="project-image"
-            />
-            <div class="project-content">
-              <h3 class="project-title">RAG 智能助手</h3>
-              <p class="project-description">
+          <div class="card">
+            <div class="card-image-container">
+              <img
+                src="https://picsum.photos/400/240?random=2"
+                alt="RAG 智能助手"
+                class="card-image"
+              />
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">RAG 智能助手</h3>
+              <p class="card-description">
                 基于检索增强生成技术的智能问答系统，能够快速从文档中提取信息并生成准确回答。<br />
                 支持多文档处理、语义检索和上下文理解。
               </p>
-              <div class="project-tech">
-                <span class="tech-tag">LangChain</span>
-                <span class="tech-tag">RAG</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">OpenAI</span>
-                <span class="tech-tag">FAISS</span>
+              <div class="tag-list">
+                <span class="tag">LangChain</span>
+                <span class="tag">RAG</span>
+                <span class="tag">Python</span>
+                <span class="tag">OpenAI</span>
+                <span class="tag">FAISS</span>
               </div>
-              <div class="project-links">
-                <a href="#" class="project-link">
+              <div class="link-list">
+                <a href="#" class="link">
                   <i class="fas fa-external-link-alt"></i> 查看详情
                 </a>
                 <a
                   href="https://github.com/linkzhangithub/rag-assistant"
                   target="_blank"
-                  class="project-link"
+                  class="link"
                 >
                   <i class="fab fa-github"></i> GitHub
                 </a>
               </div>
             </div>
           </div>
-          <div class="project-card">
-            <img
-              src="https://picsum.photos/400/240?random=3"
-              alt="智能简历分析系统"
-              class="project-image"
-            />
-            <div class="project-content">
-              <h3 class="project-title">智能简历分析系统</h3>
-              <p class="project-description">
+          <div class="card">
+            <div class="card-image-container">
+              <img
+                src="https://picsum.photos/400/240?random=3"
+                alt="智能简历分析系统"
+                class="card-image"
+              />
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">智能简历分析系统</h3>
+              <p class="card-description">
                 基于 AI
                 技术的简历分析工具，能够自动提取关键信息、评估技能匹配度并生成个性化建议。<br />
                 支持多格式简历上传、技能图谱生成和职位匹配分析。
               </p>
-              <div class="project-tech">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">TensorFlow</span>
-                <span class="tech-tag">NLP</span>
-                <span class="tech-tag">AWS</span>
+              <div class="tag-list">
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">TensorFlow</span>
+                <span class="tag">NLP</span>
+                <span class="tag">AWS</span>
               </div>
-              <div class="project-links">
-                <a href="#" class="project-link">
+              <div class="link-list">
+                <a href="#" class="link">
                   <i class="fas fa-external-link-alt"></i> 查看详情
                 </a>
                 <a
                   href="https://github.com/linkzhangithub/resume-analyzer"
                   target="_blank"
-                  class="project-link"
+                  class="link"
                 >
                   <i class="fab fa-github"></i> GitHub
                 </a>
@@ -507,7 +172,7 @@
       </div>
     </section>
 
-    <section id="tech" class="tech-stack fade-up">
+    <section id="tech" class="tech-stack section fade-up">
       <div class="container">
         <h2 class="section-title">技术栈</h2>
         <div class="tech-grid">
@@ -542,7 +207,7 @@
       </div>
     </section>
 
-    <section id="about" class="about fade-up">
+    <section id="about" class="about section fade-up">
       <div class="container">
         <h2 class="section-title">关于我</h2>
         <div class="about-content">
@@ -552,7 +217,7 @@
       </div>
     </section>
 
-    <section id="contact" class="contact fade-up">
+    <section id="contact" class="contact section fade-up">
       <div class="container">
         <h2 class="section-title">联系我</h2>
         <div class="social-links">
@@ -577,38 +242,6 @@
       <i class="fas fa-arrow-up"></i>
     </a>
 
-    <script>
-      // 滚动动画
-      const fadeElements = document.querySelectorAll(".fade-up");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
-        },
-        { threshold: 0.2 },
-      );
-      fadeElements.forEach((el) => observer.observe(el));
-
-      // 回到顶部按钮
-      const backToTopBtn = document.getElementById("backToTop");
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 300) {
-          backToTopBtn.classList.add("visible");
-        } else {
-          backToTopBtn.classList.remove("visible");
-        }
-      });
-
-      backToTopBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      });
-    </script>
+    <script src="js/script.js"></script>
   </body>
 </html>
