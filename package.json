@@ -6,7 +6,8 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build"
+    "build": "parcel build",
+    "serve": "npx http-server -p 8080"
   },
   "repository": {
     "type": "git",

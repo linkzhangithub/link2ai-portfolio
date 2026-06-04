@@ -1,3 +1,18 @@
+# Dependencies
 node_modules/
+
+# Build outputs
 dist/
 .parcel-cache
+
+# Local development files
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
