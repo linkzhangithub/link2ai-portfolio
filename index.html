@@ -124,6 +124,14 @@
                 >
                   查看简历
                 </a>
+                <a
+                  rel="noreferrer"
+                  class="cta-btn cta-btn--resume ml-3"
+                  href="javascript:void(0);"
+                  onclick="downloadResume()"
+                >
+                  下载简历
+                </a>
               </span>
             </div>
           </div>
@@ -367,6 +375,15 @@
         <p class="footer__text">最近更新：2026年6月 | © Link Zhang</p>
       </div>
     </footer>
+
+    <script>
+      function downloadResume() {
+        const confirmDownload = confirm("是否下载 PDF 版简历？");
+        if (confirmDownload) {
+          window.location.href = "assets/张皓泉%20-%20Vibe%20Coding工程师.pdf";
+        }
+      }
+    </script>
 
     <script defer type="module" src="js/script.js"></script>
   </body>
