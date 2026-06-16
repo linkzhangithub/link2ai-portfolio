@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>简历 - Vibe Coding工程师</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="resume">
+      <div class="page-wrapper">
+        <div class="top-banner"></div>
+        <div class="page">
+          <div class="bg-pattern">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="none"
+                stroke="#009688"
+                stroke-width="0.5"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="30"
+                fill="none"
+                stroke="#009688"
+                stroke-width="0.5"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="20"
+                fill="none"
+                stroke="#009688"
+                stroke-width="0.5"
+              />
+            </svg>
+          </div>
+
+          <div class="header">
+            <div class="name-section">
+              <div class="name-row">
+                <div class="name">张皓泉</div>
+                <div class="job-title">Vibe Coding 工程师</div>
+              </div>
+              <div class="contact-row">
+                <span class="location"
+                  >求职意向城市：杭州<span
+                    style="width: 3px; display: inline-block"
+                  ></span
+                ></span>
+                <span class="contact-right">
+                  <span>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span>电话: 13388005839&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span>|</span>
+                  <span>邮箱: 1519815799@qq.com</span>
+                </span>
+              </div>
+              <div class="contact-links">
+                <span>作品集:</span>
+                <a href="https://link2ai.online" target="_blank" class="link"
+                  >link2ai.online</a
+                >
+                <span>|</span>
+                <span>GitHub:</span>
+                <a
+                  href="https://github.com/linkzhangithub"
+                  target="_blank"
+                  class="link"
+                  >@linkzhangithub</a
+                >
+                <span>|</span>
+                <span style="margin-left: 2px">技术博客:</span>
+                <a
+                  href="https://yuque.com/lingzhangbooks/qianduanboke"
+                  target="_blank"
+                  class="link"
+                  >语雀博客</a
+                >
+              </div>
+            </div>
+            <div class="photo">
+              <img src="avatar.jpg" alt="头像" class="photo-img" />
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <div class="section-title-icon">简</div>
+              <div class="section-title-text">个人总结</div>
+            </div>
+            <div class="card">
+              <ul class="summary-list">
+                <li>
+                  日常用 Cursor、Trae、DeepSeek 辅助开发，在 Trae
+                  上实践过6A工作流（需求对齐→架构设计→任务拆分→审批→执行→验收），习惯用标准化流程让
+                  AI 按节奏交付。
+                </li>
+                <li>
+                  独立完成3个完整上线的 AI 项目（Vue3 + Node.js），通过腾讯云
+                  EdgeOne Pages 部署展示。
+                </li>
+                <li>
+                  写代码的同时重视用户体验：流式消息滚动时不卡、断网不白屏、图片上传时先压缩减少用户等待时间。
+                </li>
+                <li>
+                  习惯先把复杂问题拆解清楚，理清依赖关系和优先级，再按步骤执行。
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <div class="section-title-icon">项</div>
+              <div class="section-title-text">项目经历</div>
+            </div>
+            <div class="card">
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <div>
+                    <span class="timeline-company">RAG 知识库问答系统</span>
+                    <span class="timeline-position">独立开发</span>
+                  </div>
+                  <div class="timeline-period"><span>2026.04 - 至今</span></div>
+                </div>
+                <div class="project-highlight">
+                  <div class="project-highlight-title">项目概述</div>
+                  <div class="project-highlight-content">
+                    解决企业内部文档分散、传统关键词搜索语义理解不足的问题，基于
+                    RAG 技术实现基于文档内容的精准问答。
+                  </div>
+                </div>
+                <div class="project-highlight">
+                  <div class="project-highlight-title">核心功能</div>
+                  <div class="project-highlight-content">
+                    支持 PDF/TXT/MD/DOCX
+                    多格式文档上传；混合检索策略提升召回准确率；两阶段重排序优化检索结果。
+                  </div>
+                </div>
+                <div class="tech-stack">
+                  <span class="tech-tag">Vue3</span>
+                  <span class="tech-tag">Vue Router</span>
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">Express</span>
+                  <span class="tech-tag">向量检索</span>
+                  <span class="tech-tag">LLM API集成</span>
+                  <span class="tech-tag">Docker</span>
+                </div>
+                <div class="timeline-content">
+                  <ul>
+                    <li>
+                      <strong>多格式文档解析兼容性：</strong>PDF 和 DOCX
+                      解析时遇到中文乱码、表格丢失等问题。通过组合使用 pdf-parse
+                      和 mammoth.js，针对不同格式选择最优解析器。上传环节通过
+                      iconv-lite 实现文件名编码自动检测，支持 UTF-8、GBK、GB2312
+                      等多种编码转换，解决了中文文件名乱码问题。
+                    </li>
+                    <li>
+                      <strong>检索召回率低，答非所问：</strong
+                      >单纯向量检索对专业术语召回效果差。改用混合检索策略，将向量语义相似度与关键词匹配加权融合（向量权重
+                      70%、关键词权重
+                      30%），提升专业术语的召回能力。同时增加两阶段重排序：先召回
+                      Top-30 候选块，再用关键词覆盖度评分计算最终分数并输出
+                      Top-K
+                      结果，优化检索结果相关性。对最终分数低于阈值的结果直接丢弃，避免答非所问。
+                    </li>
+                    <li>
+                      <strong>大模型 API 调用不稳定：</strong>向量化和 LLM
+                      推理依赖外部
+                      API，网络波动导致请求失败。实现指数退避重试机制（最大重试
+                      3 次，基础延迟 1 秒，最大延迟 10
+                      秒），并对错误进行分类处理（网络错误和超时自动重试、认证错误和参数错误立即返回），提升系统稳定性。同时接入
+                      express-rate-limit 做接口限流，防止恶意调用。
+                    </li>
+                    <li>
+                      <strong>SSE 长连接断开：</strong>RAG 问答采用 SSE
+                      流式返回答案，长时间无数据传输导致连接被代理服务器断开。增加心跳保活机制（每
+                      15 秒发送一次心跳包），保持连接稳定。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-break"></div>
+
+      <div class="page-wrapper">
+        <div class="top-banner"></div>
+        <div class="page">
+          <div class="bg-pattern">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="none"
+                stroke="#009688"
+                stroke-width="0.5"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="30"
+                fill="none"
+                stroke="#009688"
+                stroke-width="0.5"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="20"
+                fill="none"
+                stroke="#009688"
+                stroke-width="0.5"
+              />
+            </svg>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <div class="section-title-icon">项</div>
+              <div class="section-title-text">项目经历（续）</div>
+            </div>
+            <div class="card">
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <div>
+                    <span class="timeline-company">AI 写作助手</span>
+                    <span class="timeline-position">独立开发</span>
+                  </div>
+                  <div class="timeline-period"><span>2026.03 - 至今</span></div>
+                </div>
+                <div class="project-highlight">
+                  <div class="project-highlight-title">项目概述</div>
+                  <div class="project-highlight-content">
+                    解决长文写作大纲构思难、扩写耗时问题，实现从大纲生成到分节扩写的完整流程。
+                  </div>
+                </div>
+                <div class="project-highlight">
+                  <div class="project-highlight-title">核心功能</div>
+                  <div class="project-highlight-content">
+                    输入主题自动生成结构化大纲；分节内容一键生成，支持润色/扩写/缩写；打字机效果展示，支持随时中断。
+                  </div>
+                </div>
+                <div class="tech-stack">
+                  <span class="tech-tag">Vue3</span>
+                  <span class="tech-tag">Pinia</span>
+                  <span class="tech-tag">Vite</span>
+                  <span class="tech-tag">Tailwind CSS</span>
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">Express</span>
+                  <span class="tech-tag">LLM API集成</span>
+                </div>
+                <div class="timeline-content">
+                  <ul>
+                    <li>
+                      <strong>大模型响应延迟导致用户体验差：</strong>首次调用
+                      LLM 生成大纲时响应较慢，用户等待焦虑。通过引入 SSE
+                      流式传输，将生成过程分块返回，配合前端打字机动画逐字展示，用户可提前阅读内容。同时基于
+                      AbortController
+                      实现请求中断控制，用户可随时停止生成，避免长时间无意义的等待。
+                    </li>
+                    <li>
+                      <strong>长文本生成时前端渲染卡顿：</strong
+                      >扩写长内容时，频繁的 DOM
+                      更新导致页面滚动和交互卡顿。采用分章节逐个生成策略，每次只渲染当前章节内容，配合
+                      Vue 的 shallowRef
+                      减少不必要的响应式追踪，保持页面交互流畅。
+                    </li>
+                    <li>
+                      <strong>大纲与正文内容结构不一致：</strong
+                      >用户修改大纲后重新生成正文，容易出现前后内容矛盾。采用大纲驱动的生成策略，每次生成都基于当前最新大纲结构，确保正文内容与大纲保持一致。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <div>
+                    <span class="timeline-company">AI 对话机器人</span>
+                    <span class="timeline-position">独立开发</span>
+                  </div>
+                  <div class="timeline-period"><span>2026.01 - 至今</span></div>
+                </div>
+                <div class="project-highlight">
+                  <div class="project-highlight-title">项目概述</div>
+                  <div class="project-highlight-content">
+                    解决通用对话缺乏场景适配问题，通过预设角色和语音交互提升对话体验。
+                  </div>
+                </div>
+                <div class="project-highlight">
+                  <div class="project-highlight-title">核心功能</div>
+                  <div class="project-highlight-content">
+                    预设 4 种角色适配不同场景；SSE
+                    流式输出减少等待感；语音输入转文字；图片理解功能。
+                  </div>
+                </div>
+                <div class="tech-stack">
+                  <span class="tech-tag">Vue3</span>
+                  <span class="tech-tag">Vue Router</span>
+                  <span class="tech-tag">Pinia</span>
+                  <span class="tech-tag">SSE</span>
+                  <span class="tech-tag">Markdown渲染</span>
+                  <span class="tech-tag">代码高亮</span>
+                  <span class="tech-tag">语音识别SDK</span>
+                </div>
+                <div class="timeline-content">
+                  <ul>
+                    <li>
+                      <strong>角色切换时对话风格不连贯：</strong>动态注入角色
+                      system prompt 确保风格一致；基于 Pinia + localStorage
+                      持久化多轮对话历史，支持切换恢复。
+                    </li>
+                    <li>
+                      <strong>对话内容渲染安全性：</strong>用 MarkdownIt（禁用
+                      HTML）+ highlight.js 解析渲染，避免 XSS
+                      风险同时支持富文本展示。
+                    </li>
+                    <li>
+                      <strong>图片理解响应慢：</strong>Canvas 压缩图片至
+                      800px/500KB 再上传，前端限制 5MB，优化等待体验。
+                    </li>
+                    <li>
+                      <strong>语音输入集成：</strong>集成讯飞 SDK，onTextChange
+                      实时更新输入框，边说边显示转写结果。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-break"></div>
+
+      <div class="page-wrapper">
+        <div class="top-banner"></div>
+        <div class="page">
+          <div class="bg-pattern">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="none"
+                stroke="#009688"
+                stroke-width="0.5"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="30"
+                fill="none"
+                stroke="#009688"
+                stroke-width="0.5"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="20"
+                fill="none"
+                stroke="#009688"
+                stroke-width="0.5"
+              />
+            </svg>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <div class="section-title-icon">技</div>
+              <div class="section-title-text">专业技能</div>
+            </div>
+            <div class="other-section">
+              <ul>
+                <li>
+                  <span>前端开发:</span>Vue3 · Composition API · Pinia · Vue
+                  Router · Tailwind CSS · Vite · TypeScript
+                </li>
+                <li>
+                  <span>后端开发:</span>Node.js · Express · RESTful API ·
+                  SSE流式输出 · 限流控制
+                </li>
+                <li>
+                  <span>AI 应用:</span>LLM API集成 · RAG检索增强 · 向量检索 ·
+                  Prompt Engineering · 图片理解
+                </li>
+                <li>
+                  <span>工具部署:</span>Git · Docker · 腾讯云 EdgeOne ·
+                  讯飞语音SDK
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <div class="section-title-icon">教</div>
+              <div class="section-title-text">教育背景</div>
+            </div>
+            <div class="card">
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <div>
+                    <span class="timeline-company">天津职业技术师范大学</span>
+                    <span class="timeline-position">本科 软件工程</span>
+                  </div>
+                  <div class="timeline-period">
+                    <span>2019年 - 2021年 | 天津</span>
+                  </div>
+                </div>
+                <div class="timeline-content">
+                  <ul>
+                    <li>全日制统招专升本，工学学士学位</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <div>
+                    <span class="timeline-company">天津现代职业技术学院</span>
+                    <span class="timeline-position">专科 会计电算化</span>
+                  </div>
+                  <div class="timeline-period">
+                    <span>2016年 - 2019年 | 天津</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <div class="section-title-icon">证</div>
+              <div class="section-title-text">证书荣誉</div>
+            </div>
+            <div class="other-section">
+              <ul>
+                <li><span>人社部 AIGC 应用工程师</span> - 2026年</li>
+                <li><span>工信部 程序设计师</span> - 2021年</li>
+                <li><span>校一等奖学金</span> - 2017-2021年</li>
+                <li>
+                  <span>"互联网+"大学生创新创业大赛校三等奖</span> - 2021年
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <div class="section-title-icon">工</div>
+              <div class="section-title-text">工作经历</div>
+            </div>
+            <div class="card">
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <div>
+                    <span class="timeline-company">明源云（天津）</span>
+                    <span class="timeline-position">软件实施工程师</span>
+                  </div>
+                  <div class="timeline-period"><span>2021年 | 天津</span></div>
+                </div>
+                <div class="timeline-content">
+                  <ul>
+                    <li>
+                      <strong>业务流程配置：</strong
+                      >基于SaaS平台，与产品/客户沟通确认业务规则，通过系统配置完成业务流程的线上化与自动化，实现审批表单设计、节点流转等核心功能落地。
+                    </li>
+                    <li>
+                      <strong>需求协调与管理：</strong
+                      >依据沟通结果在Jira中完成需求/问题条目的创建、状态更新与优先级管理，确保业务规则准确同步至开发与交付链路。
+                    </li>
+                    <li>
+                      <strong>项目交付支持：</strong
+                      >参与系统部署、流程验证与问题排查，协助客户完成上线验收。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-header">
+                  <div>
+                    <span class="timeline-company">金融咨询创业项目</span>
+                    <span class="timeline-position"></span>
+                  </div>
+                  <div class="timeline-period">
+                    <span>2022年 - 2025年 | 天津</span>
+                  </div>
+                </div>
+                <div class="timeline-content">
+                  <ul>
+                    <li>
+                      <strong>客户服务：</strong
+                      >负责客户信息核验与贷款申请资料整理，协助客户完成线上申请操作。
+                    </li>
+                    <li>
+                      <strong>团队协作：</strong
+                      >与团队成员分工配合（短视频引流、电话邀约、信息核验等），累计服务客户数百人。
+                    </li>
+                    <li>
+                      <strong>进度跟进：</strong
+                      >跟进贷款审批进度，及时向客户反馈审核结果及补充材料要求。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -18,7 +18,7 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
-  let filePath = '.' + req.url;
+  let filePath = '.' + decodeURIComponent(req.url);
   if (filePath === './') {
     filePath = './index.html';
   }
@@ -40,7 +40,11 @@ const server = http.createServer((req, res) => {
       }
     }
     else {
-      res.writeHead(200, { 'Content-Type': contentType });
+      const headers = { 'Content-Type': contentType };
+      if (extname === '.pdf') {
+        headers['Content-Disposition'] = 'inline; filename="resume.pdf"';
+      }
+      res.writeHead(200, headers);
       res.end(content, 'utf-8');
     }
   });
