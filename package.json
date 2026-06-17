@@ -1,35 +1,26 @@
 {
-  "name": "simplefolio",
-  "version": "1.0.1",
-  "private": "true",
-  "description": "A clean, beautiful and responsive portfolio template for Developers!",
-  "source": "index.html",
+  "name": "link2ai-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Link Zhang 的个人作品集网站 - 专注于前端开发与AI应用开发",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build",
-    "serve": "npx http-server -p 8080"
+    "dev": "node server.js",
+    "serve": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cobiwave/simplefolio"
+    "url": "https://github.com/linkzhangithub/link2ai-portfolio.git"
   },
-  "keywords": [],
-  "author": "Jacobo Martinez",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cobiwave/simplefolio/issues"
-  },
-  "homepage": "https://github.com/cobiwave/simplefolio#readme",
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.8.2",
-    "parcel": "^2.8.2",
-    "prettier": "^2.8.1"
-  },
+  "keywords": [
+    "portfolio",
+    "vue",
+    "ai",
+    "frontend",
+    "link2ai"
+  ],
+  "author": "Link Zhang",
+  "license": "MIT",
   "dependencies": {
-    "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.2.3",
-    "jquery": "^3.6.3",
-    "popper.js": "^1.16.1",
     "vanilla-tilt": "^1.8.0"
   }
 }
