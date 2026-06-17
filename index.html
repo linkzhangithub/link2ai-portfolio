@@ -144,8 +144,9 @@
                 <a
                   rel="noreferrer"
                   class="cta-btn cta-btn--download ml-3"
-                  href="javascript:void(0);"
-                  onclick="downloadResume()"
+                  href="assets/resume.pdf"
+                  download="resume.pdf"
+                  onclick="return confirmDownload();"
                 >
                   下载简历
                 </a>
@@ -394,11 +395,8 @@
     </footer>
 
     <script>
-      function downloadResume() {
-        const confirmDownload = confirm("是否下载 PDF 版简历？");
-        if (confirmDownload) {
-          window.location.href = "assets/resume.pdf";
-        }
+      function confirmDownload() {
+        return confirm("是否下载 PDF 版简历？");
       }
     </script>
 
