@@ -83,7 +83,7 @@
               </div>
             </div>
             <div class="photo">
-              <img src="avatar.jpg" alt="头像" class="photo-img" />
+              <img src="张皓泉.jpg" alt="头像" class="photo-img" />
             </div>
           </div>
 
@@ -130,15 +130,15 @@
                 <div class="project-highlight">
                   <div class="project-highlight-title">项目概述</div>
                   <div class="project-highlight-content">
-                    解决企业内部文档分散、传统关键词搜索语义理解不足的问题，基于
-                    RAG 技术实现基于文档内容的精准问答。
+                    基于 RAG
+                    技术实现基于文档内容的精准问答，支持在线演示（预置文档）与本地部署（自定义文档）双模式。
                   </div>
                 </div>
                 <div class="project-highlight">
                   <div class="project-highlight-title">核心功能</div>
                   <div class="project-highlight-content">
                     支持 PDF/TXT/MD/DOCX
-                    多格式文档上传；混合检索策略提升召回准确率；两阶段重排序优化检索结果。
+                    多格式文档上传；查询长度自适应的混合检索；两阶段排序优化检索结果相关性。
                   </div>
                 </div>
                 <div class="tech-stack">
@@ -146,9 +146,9 @@
                   <span class="tech-tag">Vue Router</span>
                   <span class="tech-tag">Node.js</span>
                   <span class="tech-tag">Express</span>
-                  <span class="tech-tag">向量检索</span>
+                  <span class="tech-tag">向量相似度计算</span>
                   <span class="tech-tag">LLM API集成</span>
-                  <span class="tech-tag">Docker</span>
+                  <span class="tech-tag">SSE流式传输</span>
                 </div>
                 <div class="timeline-content">
                   <ul>
@@ -161,12 +161,7 @@
                     </li>
                     <li>
                       <strong>检索召回率低，答非所问：</strong
-                      >单纯向量检索对专业术语召回效果差。改用混合检索策略，将向量语义相似度与关键词匹配加权融合（向量权重
-                      70%、关键词权重
-                      30%），提升专业术语的召回能力。同时增加两阶段重排序：先召回
-                      Top-30 候选块，再用关键词覆盖度评分计算最终分数并输出
-                      Top-K
-                      结果，优化检索结果相关性。对最终分数低于阈值的结果直接丢弃，避免答非所问。
+                      >针对向量检索对专业术语召回差、停用词过滤过度问题，采用查询长度自适应混合检索（长查询：向量60%+关键词30%+人名10%；短查询：向量50%+关键词40%+人名10%），并优化停用词表。增加两阶段排序：先召回Top-30，再用关键词覆盖度Rerank（混合分数80%+覆盖度20%），显著提升相关性。
                     </li>
                     <li>
                       <strong>大模型 API 调用不稳定：</strong>向量化和 LLM
