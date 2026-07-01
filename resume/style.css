@@ -422,12 +422,12 @@ body {
 
 @media screen and (max-device-width: 768px) {
     .divider-portfolio {
-        margin-left: 3px;
+        margin-left: 4px;
+        margin-right: 4px;
     }
     
     .divider-github {
         margin-left: 9px;
-        margin-right: 4px;
     }
 }
 
