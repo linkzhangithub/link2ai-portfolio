@@ -144,6 +144,12 @@ body {
     margin-right: 8px;
 }
 
+.contact-links span:nth-child(3),
+.contact-links span:nth-child(5) {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
 .contact-links span:empty {
     display: none;
 }
