@@ -422,6 +422,16 @@ body {
     font-size: 11px;
 }
 
+@media screen and (max-width: 768px) {
+    .divider-portfolio {
+        margin-left: 2px;
+    }
+    
+    .divider-github {
+        margin-left: 4px;
+    }
+}
+
 @media print {
     body {
         print-color-adjust: exact;
