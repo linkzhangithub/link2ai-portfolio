@@ -416,6 +416,114 @@ body {
     font-size: 11px;
 }
 
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .resume,
+    .page-wrapper,
+    .page {
+        width: 100% !important;
+        min-height: auto !important;
+        padding: 15px !important;
+    }
+    
+    .top-banner {
+        width: 100% !important;
+        height: 10px !important;
+    }
+    
+    .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .name-section {
+        margin-bottom: 15px;
+    }
+    
+    .name-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .name {
+        font-size: 20px;
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .job-title {
+        font-size: 14px;
+    }
+    
+    .contact-row {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 13px;
+    }
+    
+    .contact-right {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 5px;
+    }
+    
+    .contact-right span {
+        margin-left: 8px;
+        font-size: 13px;
+    }
+    
+    .contact-links {
+        white-space: normal;
+        word-break: break-all;
+        font-size: 13px;
+    }
+    
+    .photo {
+        width: 100px;
+        height: 130px;
+        margin-bottom: 10px;
+    }
+    
+    .section-title-text {
+        font-size: 14px;
+    }
+    
+    .summary-list li,
+    .timeline-content li,
+    .other-section li {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+    
+    .bg-pattern {
+        display: none;
+    }
+    
+    .timeline-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .timeline-period {
+        text-align: left;
+        margin-top: 5px;
+    }
+    
+    .project-highlight {
+        padding: 8px 10px;
+    }
+    
+    .tech-tag {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+}
+
 @media print {
     body {
         print-color-adjust: exact;
