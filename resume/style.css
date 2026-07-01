@@ -17,6 +17,10 @@ body {
     background-color: #f5f7f9;
     margin: 0;
     padding: 20px;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 .resume {
@@ -414,6 +418,16 @@ body {
     padding: 3px 8px;
     border-radius: 4px;
     font-size: 11px;
+}
+
+@media screen and (max-device-width: 768px) {
+    .divider-portfolio {
+        margin-left: 3px;
+    }
+    
+    .divider-github {
+        margin-left: 8px;
+    }
 }
 
 @media print {
