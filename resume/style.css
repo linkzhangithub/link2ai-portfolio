@@ -422,7 +422,7 @@ body {
     font-size: 11px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-device-width: 768px) {
     .divider-portfolio {
         margin-left: 2px;
     }
