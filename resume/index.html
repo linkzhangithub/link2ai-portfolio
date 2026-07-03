@@ -6,7 +6,7 @@
       name="viewport"
       content="width=210mm, initial-scale=0.3, maximum-scale=5, user-scalable=yes"
     />
-    <title>简历 - 前端开发工程师</title>
+    <title>简历 - AI应用全栈开发（前端侧重）</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -47,7 +47,7 @@
             <div class="name-section">
               <div class="name-row">
                 <div class="name">张皓泉</div>
-                <div class="job-title">前端开发工程师（AI 方向）</div>
+                <div class="job-title">AI应用全栈开发（前端侧重）</div>
               </div>
               <div class="contact-row">
                 <span class="location"
@@ -141,7 +141,8 @@
                   <div class="project-highlight-title">核心功能</div>
                   <div class="project-highlight-content">
                     支持 PDF/TXT/MD/DOCX
-                    多格式文档上传；查询长度自适应的混合检索；两阶段排序优化检索结果相关性。
+                    多格式文档上传；查询扩展与同义词映射增强召回；三路混合检索（向量相似度+关键词覆盖率+人名加权）+
+                    两阶段排序优化相关性；SSE 流式输出 + 心跳保活。
                   </div>
                 </div>
                 <div class="tech-stack">
@@ -164,15 +165,29 @@
                     </li>
                     <li>
                       <strong>检索召回率低，答非所问：</strong
-                      >针对向量检索对专业术语召回差、停用词过滤过度问题，采用查询长度自适应混合检索（长查询：向量60%+关键词30%+人名10%；短查询：向量50%+关键词40%+人名10%），并优化停用词表。增加两阶段排序：先召回Top-30，再用关键词覆盖度Rerank（混合分数80%+覆盖度20%），显著提升相关性。
+                      >向量检索对专业术语召回差、停用词过滤过度。采用查询长度自适应混合检索（长查询≥8字：向量60%+关键词30%+人名10%；短查询<
+                      8字：向量50%+关键词40%+人名10%），并通过 expandQuery
+                      同义词映射表扩展查询意图（如"rag"自动扩展为"检索增强生成
+                      RAG
+                      知识库问答"），优化停用词表。两阶段排序：先混合检索取候选集，再用关键词覆盖度
+                      Rerank（混合分数80%+覆盖度20%），显著提升相关性。
                     </li>
                     <li>
-                      <strong>大模型 API 调用不稳定：</strong>向量化和 LLM
+                      <strong>大模型幻觉问题：</strong>LLM
+                      可能编造文档外内容。通过 temperature=0.1 + top_p=0.5
+                      压缩采样随机性，并在 Prompt
+                      中设置多层约束（禁止编造、禁止外泄知识、兜底话术"根据现有资料无法回答"），同时在文件名拼接
+                      Prompt 前通过 sanitizeFileName
+                      过滤特殊字符，防止格式注入干扰模型输出。
+                    </li>
+                    <li>
+                      <strong>API 调用不稳定：</strong> 向量化和 LLM
                       推理依赖外部
                       API，网络波动导致请求失败。实现指数退避重试机制（最大重试
-                      3 次，基础延迟 1 秒，最大延迟 10
-                      秒），并对错误进行分类处理（网络错误和超时自动重试、认证错误和参数错误立即返回），提升系统稳定性。同时接入
-                      express-rate-limit 做接口限流，防止恶意调用。
+                      3 次，基础延迟 1 秒），并对错误分类处理（4xx
+                      客户端错误立即返回、429
+                      限流/5xx/网络错误自动重试）。同时接入 express-rate-limit
+                      做接口限流（每分钟 10 次），防止恶意调用。
                     </li>
                     <li>
                       <strong>SSE 长连接断开：</strong>RAG 问答采用 SSE
@@ -238,13 +253,15 @@
                 <div class="project-highlight">
                   <div class="project-highlight-title">项目概述</div>
                   <div class="project-highlight-content">
-                    解决长文写作大纲构思难、扩写耗时问题，实现从大纲生成到分节扩写的完整流程。
+                    解决长文写作大纲构思难、扩写耗时问题，实现从大纲生成、分节扩写到
+                    AI 质检的完整闭环。
                   </div>
                 </div>
                 <div class="project-highlight">
                   <div class="project-highlight-title">核心功能</div>
                   <div class="project-highlight-content">
-                    输入主题自动生成结构化大纲；分节内容一键生成，支持润色/扩写/缩写；打字机效果展示，支持随时中断。
+                    输入主题自动生成结构化大纲；分节内容一键生成，支持润色/扩写/缩写；上下文感知生成确保全文一致；AI
+                    质检（5维度评分+改进建议）；打字机效果展示，支持随时中断。
                   </div>
                 </div>
                 <div class="tech-stack">
@@ -259,11 +276,10 @@
                 <div class="timeline-content">
                   <ul>
                     <li>
-                      <strong>大模型响应延迟导致用户体验差：</strong>首次调用
-                      LLM 生成大纲时响应较慢，用户等待焦虑。通过引入 SSE
-                      流式传输，将生成过程分块返回，配合前端打字机动画逐字展示，用户可提前阅读内容。同时基于
-                      AbortController
-                      实现请求中断控制，用户可随时停止生成，避免长时间无意义的等待。
+                      <strong>大模型响应延迟导致用户体验差：</strong>LLM
+                      生成内容时响应较慢，用户等待焦虑。正文生成引入 SSE
+                      流式传输，将生成过程分块返回；前端配合打字机动画逐字展示，让用户可提前阅读。同时基于
+                      AbortController 实现请求中断控制，用户可随时停止生成。
                     </li>
                     <li>
                       <strong>长文本生成时前端渲染卡顿：</strong
@@ -275,6 +291,15 @@
                     <li>
                       <strong>大纲与正文内容结构不一致：</strong
                       >用户修改大纲后重新生成正文，容易出现前后内容矛盾。采用大纲驱动的生成策略，每次生成都基于当前最新大纲结构，确保正文内容与大纲保持一致。
+                    </li>
+                    <li>
+                      <strong>AI 质检返回 JSON 格式不稳定：</strong>LLM
+                      输出的评分 JSON 可能包含 Markdown
+                      标记或格式异常。实现多重清洗（正则去除代码块标记 + JSON
+                      范围精确截取）、兼容新旧字段格式（suggestions
+                      字符串/对象数组统一转换）、分数边界保护（Math.min/Math.max
+                      钳位至
+                      0-20），解析完全失败时返回默认评语而非白屏，确保前端始终可用。
                     </li>
                   </ul>
                 </div>
@@ -298,7 +323,7 @@
                   <div class="project-highlight-title">核心功能</div>
                   <div class="project-highlight-content">
                     预设 4 种角色适配不同场景；SSE
-                    流式输出减少等待感；语音输入转文字；图片理解功能。
+                    流式输出减少等待感；语音输入转文字；图片理解功能；对话历史持久化与多轮上下文。
                   </div>
                 </div>
                 <div class="tech-stack">
@@ -313,22 +338,28 @@
                 <div class="timeline-content">
                   <ul>
                     <li>
-                      <strong>角色切换时对话风格不连贯：</strong>动态注入角色
-                      system prompt 确保风格一致；基于 Pinia + localStorage
-                      持久化多轮对话历史，支持切换恢复。
+                      <strong>角色切换时对话风格不连贯：</strong
+                      >动态注入角色system prompt确保风格一致，基于Pinia +
+                      localStorage持久化多轮对话历史，支持切换角色不影响对应上下文。
                     </li>
                     <li>
-                      <strong>对话内容渲染安全性：</strong>用 MarkdownIt（禁用
-                      HTML）+ highlight.js 解析渲染，避免 XSS
-                      风险同时支持富文本展示。
+                      <strong>对话内容渲染安全性：</strong>采用 MarkdownIt（禁用
+                      HTML）+ highlight.js
+                      解析渲染，从源头禁止危险标签，在支持富文本展示的同时避免
+                      XSS 漏洞。同时在 system prompt 中约束 AI 不返回
+                      HTML/JavaScript，双管齐下。
+                    </li>
+                    <li>
+                      <strong>语音识别稳定性：</strong>集成讯飞语音识别
+                      SDK，通过 onWillStatusChange
+                      监听状态流转（idle→ing→end）确保 UI
+                      麦克风图标与录音状态严格同步；配置缺失时前端弹窗提示，识别异常时自动调用
+                      stopListening()
+                      回收资源并重置状态，避免多次点击创建多个实例导致内存泄漏。
                     </li>
                     <li>
                       <strong>图片理解响应慢：</strong>Canvas 压缩图片至
                       800px/500KB 再上传，前端限制 5MB，优化等待体验。
-                    </li>
-                    <li>
-                      <strong>语音输入集成：</strong>集成讯飞 SDK，onTextChange
-                      实时更新输入框，边说边显示转写结果。
                     </li>
                   </ul>
                 </div>
@@ -380,20 +411,19 @@
             <div class="other-section">
               <ul>
                 <li>
-                  <span>前端开发:</span>Vue3 · Composition API · Pinia · Vue
-                  Router · Tailwind CSS · Vite · TypeScript
+                  <span>前端开发:</span>Vue3 · TypeScript · Vite · Pinia · Vue
+                  Router · Tailwind CSS · 响应式设计
+                </li>
+                <li>
+                  <span>AI 应用:</span>LLM API集成 · RAG检索增强 · Prompt
+                  Engineering · 向量检索 · 多模态识别
                 </li>
                 <li>
                   <span>后端开发:</span>Node.js · Express · RESTful API ·
                   SSE流式输出 · 限流控制
                 </li>
                 <li>
-                  <span>AI 应用:</span>LLM API集成 · RAG检索增强 · 向量检索 ·
-                  Prompt Engineering · 图片理解
-                </li>
-                <li>
-                  <span>工具部署:</span>Git · Docker · 腾讯云 EdgeOne ·
-                  讯飞语音SDK
+                  <span>工程化与部署:</span>Git · 腾讯云EdgeOne · CI/CD基础
                 </li>
               </ul>
             </div>
@@ -417,7 +447,7 @@
                 </div>
                 <div class="timeline-content">
                   <ul>
-                    <li>全日制统招专升本，工学学士学位</li>
+                    <li>全日制统招本科，工学学士学位</li>
                   </ul>
                 </div>
               </div>
@@ -444,10 +474,10 @@
               <ul>
                 <li><span>人社部 AIGC 应用工程师</span> - 2026年</li>
                 <li><span>工信部 程序设计师</span> - 2021年</li>
-                <li><span>校一等奖学金</span> - 2017-2021年</li>
                 <li>
                   <span>"互联网+"大学生创新创业大赛校三等奖</span> - 2021年
                 </li>
+                <li><span>校园各类奖学金</span> - 2017-2021年</li>
               </ul>
             </div>
           </div>
@@ -470,15 +500,15 @@
                   <ul>
                     <li>
                       <strong>业务流程配置：</strong
-                      >基于SaaS平台，与产品/客户沟通确认业务规则，通过系统配置完成业务流程的线上化与自动化，实现审批表单设计、节点流转等核心功能落地。
+                      >驻场天津NCC新城市中心项目（客户：天津西青区中北镇政府），基于明源云空间平台完成租约审批、资产台账、收费规则等核心流程配置。针对系统与客户业务的差异，通过字段扩展、表单重构、规则编排等手段进行低代码个性化适配；主导分析并拉通产研推动迭代。
                     </li>
                     <li>
                       <strong>需求协调与管理：</strong
-                      >依据沟通结果在Jira中完成需求/问题条目的创建、状态更新与优先级管理，确保业务规则准确同步至开发与交付链路。
+                      >依负责客户需求的全链路转化，在Jira中完成需求创建与状态跟踪，协同管理40+条需求池。面对需求增速高于研发产能，通过优先级排序与预期管理，确保核心诉求落地。
                     </li>
                     <li>
                       <strong>项目交付支持：</strong
-                      >参与系统部署、流程验证与问题排查，协助客户完成上线验收。
+                      >参与系统部署、流程验证及UAT测试。在客户发现前主动识别并修复8条重大bug，规避上线事故与投诉风险。协助系统上线验收，推动平台平稳过渡至运营阶段。
                     </li>
                   </ul>
                 </div>
@@ -487,7 +517,7 @@
                 <div class="timeline-header">
                   <div>
                     <span class="timeline-company">金融咨询创业项目</span>
-                    <span class="timeline-position"></span>
+                    <span class="timeline-position">创业合伙人</span>
                   </div>
                   <div class="timeline-period">
                     <span>2022年 - 2025年 | 天津</span>
@@ -496,16 +526,16 @@
                 <div class="timeline-content">
                   <ul>
                     <li>
-                      <strong>客户服务：</strong
-                      >负责客户信息核验与贷款申请资料整理，协助客户完成线上申请操作。
+                      <strong>客户服务与资质审核：</strong
+                      >负责客户信息核验与贷款申请资料的完整性审查，协助客户完成线上申请操作全流程，确保资料规范、合规、齐全，提升申请通过率。
                     </li>
                     <li>
-                      <strong>团队协作：</strong
-                      >与团队成员分工配合（短视频引流、电话邀约、信息核验等），累计服务客户数百人。
+                      <strong>团队协同与流程运营：</strong
+                      >参与团队分工协作，涵盖短视频引流、客户邀约、信息核验等环节，打通前端获客到后端转化的服务链路，累计服务客户数百人。
                     </li>
                     <li>
-                      <strong>进度跟进：</strong
-                      >跟进贷款审批进度，及时向客户反馈审核结果及补充材料要求。
+                      <strong>进度追踪与风控闭环：</strong
+                      >跟进贷款审批全流程，及时向客户同步审核结果，确保审批进度透明可控，实现从申请提交到放款结果的高效反馈闭环。
                     </li>
                   </ul>
                 </div>

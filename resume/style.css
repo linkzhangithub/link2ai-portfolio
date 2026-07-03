@@ -52,7 +52,7 @@ body {
 .page {
     width: 210mm;
     min-height: 297mm;
-    padding: 15mm 20mm 25mm;
+    padding: 15mm 20mm 0;
     position: relative;
     background: #fff;
 }
@@ -422,12 +422,11 @@ body {
 
 @media screen and (max-device-width: 768px) {
     .divider-portfolio {
-        margin-left: 4px;
-        margin-right: 10px;
+        margin-left: 3px;
     }
     
     .divider-github {
-        margin-left: 14px;
+        margin-left: 8px;
     }
 }
 
@@ -458,7 +457,7 @@ body {
     .page {
         width: 210mm;
         min-height: 297mm;
-        padding: 15mm 20mm 25mm;
+        padding: 15mm 20mm 0;
         page-break-after: auto;
         position: relative;
     }
