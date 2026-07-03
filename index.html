@@ -167,12 +167,13 @@
                 <h3 class="project-wrapper__text-title">RAG知识库问答系统</h3>
                 <div>
                   <p class="mb-4">
-                    <strong>项目背景：</strong
-                    >企业内部文档分散、传统关键词搜索难以理解语义。本项目基于RAG技术，实现基于文档内容的精准问答。
+                    <strong>项目背景：</strong>基于 RAG
+                    技术实现基于文档内容的精准问答，支持在线演示（预置文档）与本地部署（自定义文档）双模式。
                     <br />
                     <br />
-                    <strong>核心功能：</strong
-                    >支持PDF/TXT/MD/DOCX多格式文档上传；混合检索策略提升召回准确率；两阶段重排序优化检索结果。
+                    <strong>核心功能：</strong>支持 PDF/TXT/MD/DOCX
+                    多格式文档上传；查询扩展与同义词映射增强召回；三路混合检索（向量相似度+关键词覆盖率+人名加权）+
+                    两阶段排序优化相关性；SSE 流式输出 + 心跳保活。
                     <br />
                     <br />
                     <strong>技术栈：</strong>Vue3 · Vue Router · Node.js ·
@@ -232,7 +233,8 @@
                     <br />
                     <br />
                     <strong>核心功能：</strong
-                    >输入主题自动生成结构化大纲；分节内容一键生成，支持润色、扩写、缩写；打字机效果展示，支持随时中断。
+                    >输入主题自动生成结构化大纲；分节内容一键生成，支持润色/扩写/缩写；上下文感知生成确保全文一致；AI
+                    质检（5维度评分+改进建议）；打字机效果展示，支持随时中断。
                     <br />
                     <br />
                     <strong>技术栈：</strong>Vue3 · Pinia · Vite · Tailwind CSS
@@ -389,7 +391,7 @@
           >
         </div>
         <hr />
-        <p class="footer__text">最近更新：2026年6月 | © Link Zhang</p>
+        <p class="footer__text">最近更新：2026年7月 | © Link Zhang</p>
       </div>
     </footer>
 
